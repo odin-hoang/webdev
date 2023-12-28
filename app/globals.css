@@ -1,27 +1,221 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  body {
+    @apply text-custom-black;
+    font-family: "Rubik", sans-serif;
+  }
+  .app-wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  @media only screen and (max-width: 800px) {
+    .app-wrapper {
+      height: auto;
+      flex-direction: column;
+    }
+    .app-card {
+      margin: 20px auto;
+    }
   }
 }
+@layer components {
+  .app-card {
+    @apply bg-custom-white;
+    width: 360px;
+    height: 600px;
+    box-shadow: 0 3.2px 2.2px rgba(0, 0, 0, 0.02),
+      0 7px 5.4px rgba(0, 0, 0, 0.028), 0 12.1px 10.1px rgba(0, 0, 0, 0.035),
+      0 19.8px 18.1px rgba(0, 0, 0, 0.042), 0 34.7px 33.8px rgba(0, 0, 0, 0.05),
+      0 81px 81px rgba(0, 0, 0, 0.07);
+    border-radius: 30px;
+    overflow: hidden;
+    padding: 0 28px;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .app-card:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+    @apply bg-custom-yellow;
+    top: -20%;
+    left: -50%;
+    z-index: 0;
+  }
+  .app-card-top {
+    margin: 12px 0;
+    position: relative;
+  }
+  .app-card-title {
+    font-size: 24px;
+    @apply font-bold my-4 relative;
+  }
+  .app-card-body {
+    height: calc(100% - 98px);
+    position: relative;
+    overflow-y: scroll;
+    scrollbar-width: none;
+  }
+  .app-shop-item {
+    padding: 40px 0;
+  }
+  .app-shop-item:first-child {
+    padding: 0;
+  }
+  .app-shop-item-image {
+    border-radius: 30px;
+    height: 380px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .app-shop-item-image img {
+    display: block;
+    width: 100%;
+    filter: drop-shadow(0 30px 20px rgba(0, 0, 0, 0.2));
+    transform: rotate(-24deg);
+    margin-left: -16px;
+  }
+  .app-shop-item-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 26px 0 20px;
+    line-height: 1.5;
+  }
+  .app-shop-item-description {
+    font-size: 13px;
+    @apply text-custom-gray;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .app-shop-item-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .app-shop-item-price {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .app-shop-item-button {
+    cursor: pointer;
+    background-color: #f6c90e;
+    font-weight: 700;
+    font-size: 14px;
+    box-sizing: border-box;
+    width: auto;
+    height: 46px;
+    min-width: 46px;
+    padding: 16px 20px;
+    border-radius: 100px;
+    transition: all 0.25s ease;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .app-card-title-amount {
+  }
+  .app-cart-item {
+    display: flex;
+    padding: 20px 0;
+  }
+  .app-cart-item-left {
+    flex: 0;
+  }
+  .app-cart-item-image {
+    width: 90px;
+    height: 90px;
+    border-radius: 100%;
+    background-color: #eee;
+    margin-right: 34px;
+  }
+  .app-cart-item-block {
+    display: block;
+  }
+  .app-cart-item-block img {
+    display: block;
+    width: 140%;
+    max-width: none;
+    transform: rotate(-28deg) translateY(-40px);
+    filter: drop-shadow(0 30px 20px rgba(0, 0, 0, 0.2));
+  }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  .app-cart-item-right {
+    flex: 1;
+  }
+  .app-cart-item-name {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .app-cart-item-price {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .app-cart-item-action,
+  .app-cart-item-count {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .app-cart-item-count {
+    flex: 1;
+  }
+  .app-cart-item-button {
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    border-radius: 100%;
+    background-color: #eee;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s;
+    user-select: none;
+  }
+  .app-cart-item-number {
+    font-size: 14px;
+    margin: 0 8px;
+    width: 20px;
+    text-align: center;
+    font-weight: 300;
+  }
+  .app-cart-item-remove {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f6c90e;
+    transition: 0.2s;
+    user-select: none;
+  }
 }
