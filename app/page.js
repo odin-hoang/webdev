@@ -23,10 +23,12 @@ export default function Home() {
     //     : process.env.SERVER_API_URL_PROD;
     // axios.defaults.baseURL = apiUrl;
     // console.log(apiUrl);
-    axios.get("http://127.0.0.1:8000/api/products").then((products) => {
-      // console.log(products.data.shoes);
-      setShoes(products.data.shoes);
-    });
+    axios
+      .get("https://webdev-php-production.up.railway.app/api/products")
+      .then((products) => {
+        // console.log(products.data.shoes);
+        setShoes(products.data.shoes);
+      });
   }, []);
   const cart = useSelector((state) => state.cart.cartItems);
   const dispatch = useDispatch();
